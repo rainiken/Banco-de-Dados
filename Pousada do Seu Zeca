@@ -1,0 +1,31 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Página-1" id="AKWY5vXoLZTYVbYBk8VX">
+    <mxGraphModel dx="1030" dy="562" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="cliente" parent="1" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;subRow=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;CLIENTE&lt;/b&gt;&lt;hr&gt;PK id_cliente&lt;br&gt;nome&lt;br&gt;cpf&lt;br&gt;telefone&lt;br&gt;email" vertex="1">
+          <mxGeometry height="140" width="180" x="40" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="quarto" parent="1" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;subRow=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;QUARTO&lt;/b&gt;&lt;hr&gt;PK id_quarto&lt;br&gt;numero&lt;br&gt;tipo&lt;br&gt;valor_diaria&lt;br&gt;status" vertex="1">
+          <mxGeometry height="140" width="180" x="40" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="reserva" parent="1" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;subRow=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;b&gt;RESERVA&lt;/b&gt;&lt;hr&gt;PK id_reserva&lt;br&gt;data_checkin&lt;br&gt;data_checkout&lt;br&gt;valor_total&lt;br&gt;status_reserva&lt;br&gt;FK fk_cliente&lt;br&gt;FK fk_quarto" vertex="1">
+          <mxGeometry height="170" width="190" x="320" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="pagamento" parent="1" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;subRow=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;PAGAMENTO&lt;/b&gt;&lt;hr&gt;PK id_pagamento&lt;br&gt;data_pagamento&lt;br&gt;valor_pago&lt;br&gt;forma_pagamento&lt;br&gt;FK fk_reserva" vertex="1">
+          <mxGeometry height="140" width="190" x="590" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_cliente_reserva" edge="1" parent="1" source="cliente" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="reserva" value="1 : N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_quarto_reserva" edge="1" parent="1" source="quarto" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="reserva" value="0 : N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_reserva_pagamento" edge="1" parent="1" source="reserva" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="pagamento" value="1 : N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
