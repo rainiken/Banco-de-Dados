@@ -1,6 +1,6 @@
-# Sistema de Gestão de Pousada (Pousada do Seu Zeca)
+# Sistema de Gestão de Pousada do Seu Zeca
 
-Este repositório contém a modelagem conceitual de banco de dados para o sistema de gestão da Pousada Vila do Sol, desenvolvido para a disciplina de Banco de Dados.
+Este repositório contém a modelagem conceitual de banco de dados para o sistema de gestão da Pousada do Seu Zeca, desenvolvido para a disciplina de Banco de Dados.
 
 ---
 
@@ -22,4 +22,4 @@ Ao final da estadia, é gerado um **Pagamento** associado à reserva, contendo a
 * **RN02 - Vínculo de Reserva:** Toda reserva deve obrigatoriamente estar associada a um único cliente e a um único quarto.
 * **RN03 - Histórico de Reservas:** Um cliente pode realizar várias reservas ao longo do tempo, mas uma reserva pertence a apenas um cliente.
 * **RN04 - Reuso de Quarto:** Um quarto pode estar presente em diversas reservas em períodos de tempo diferentes.
-* **RN05 - Integridade de Pagamento:** Cada pagamento deve estar vinculado a exatamente uma reserva. Uma reserva só possui um pagamento final registrado.# Banco-de-Dados
+* **RN05 - Integridade de Pagamento:** Cada pagamento deve estar vinculado a exatamente uma reserva. Uma reserva só possui um pagamento final registrado.
