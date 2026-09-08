@@ -55,9 +55,3 @@
 * **fk_reserva** (Chave Estrangeira / FK)
 
 ---
-
-## 4. Diagrama Entidade e Relacionamento (DER)
-
-![Diagrama ER - Pousada do Seu Zeca](MER.png)
-
-> **Nota:** O diagrama conceitual foi construído no Draw.io. O arquivo editável `MER.drawio` encontra-se salvo na pasta `modelagem/` deste repositório.
