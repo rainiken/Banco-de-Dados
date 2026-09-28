@@ -1,25 +1,22 @@
-# Sistema de Gestão de Pousada do Seu Zeca
+# Sistema de Gestão de Pousada
 
-Este repositório contém a modelagem conceitual de banco de dados para o sistema de gestão da Pousada do Seu Zeca, desenvolvido para a disciplina de Banco de Dados.
+## 1. Descrição do Minimundo
+Uma pousada necessita de um sistema centralizado para automatizar a gestão de hospedagens, reservas, controlo de acomodações e faturação de consumos extras. 
 
----
+Atualmente, o controlo manual dificulta a verificação da disponibilidade de quartos, a gestão de acompanhantes e a rastreabilidade dos itens consumidos pelos hóspedes durante a estadia. O sistema visa resolver o problema de sobreposição de reservas, perda de registos de consumos e falta de histórico financeiro por hospedagem.
 
-## Mini-Mundo
+## 2. Processos Principais
+* **Gestão de Clientes e Funcionários:** Registo dos hóspedes responsáveis e dos colaboradores que realizam os atendimentos.
+* **Gestão de Reservas:** Registo prévio da intenção de estadia, especificando datas previstas de entrada e saída.
+* **Check-in e Hospedagem:** Abertura da estadia efetiva no momento da chegada do cliente e alocação do quarto.
+* **Registo de Acompanhantes:** Registo dos membros adicionais vinculados à mesma hospedagem.
+* **Controlo de Consumo Extra:** Lançamento de produtos (frigobar, restaurante) e serviços (lavandaria, passeios) consumidos durante a estadia.
+* **Check-out e Pagamento:** Fechamento da conta com cálculo das diárias e consumos, permitindo pagamentos fracionados ou integrais.
 
-A **Pousada do Seu Zeca** necessita de um sistema para informatizar o controle de suas acomodações e hospedagens. Atualmente, o controle é manual, o que gera conflitos de datas e atrasos no atendimento.
-
-O sistema deve cadastrar os **Clientes**, armazenando informações como nome, CPF, telefone e e-mail. A pousada possui vários **Quartos**, sendo que cada quarto é identificado por um número, tipo (Solteiro, Casal, Suíte Master), valor da diária e status atual (Disponível, Ocupado, Manutenção).
-
-Os clientes realizam **Reservas** informando a data prevista de entrada (*check-in*) e a data prevista de saída (*check-out*). Cada reserva está vinculada a um único cliente e a um único quarto. 
-
-Ao final da estadia, é gerado um **Pagamento** associado à reserva, contendo a data do pagamento, o valor total calculado e a forma de pagamento (Cartão, PIX, Dinheiro).
-
----
-
-## Regras de Negócio
-
-* **RN01 - Unicidade de Cliente:** Não é permitido cadastrar dois clientes com o mesmo CPF.
-* **RN02 - Vínculo de Reserva:** Toda reserva deve obrigatoriamente estar associada a um único cliente e a um único quarto.
-* **RN03 - Histórico de Reservas:** Um cliente pode realizar várias reservas ao longo do tempo, mas uma reserva pertence a apenas um cliente.
-* **RN04 - Reuso de Quarto:** Um quarto pode estar presente em diversas reservas em períodos de tempo diferentes.
-* **RN05 - Integridade de Pagamento:** Cada pagamento deve estar vinculado a exatamente uma reserva. Uma reserva só possui um pagamento final registrado.
+## 3. Regras de Negócio
+1. Um **Cliente** pode realizar várias reservas ao longo do tempo, mas cada **Reserva** pertence obrigatoriamente a apenas um cliente.
+2. Cada **Reserva** é registada por um **Funcionário**.
+3. Uma **Reserva** pode originar no máximo uma **Hospedagem** (no check-in) ou nenhuma (em caso de cancelamento).
+4. Várias **Hospedagens** em datas distintas ocupam o mesmo **Quarto**.
+5. Cada **Quarto** pertence a uma **Categoria** que determina o valor base da sua diária.
+6. Uma **Hospedagem** pode incluir múltiplos **Acompanhantes**, gerar múltiplos lançamentos de **Consumo** e receber múltiplos **Pagamentos**.
