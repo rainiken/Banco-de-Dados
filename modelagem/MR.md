@@ -1,111 +1,160 @@
-# Modelo de Entidade e Relacionamento (MER) - Sistema Pousada
+# Modelo Entidade-Relacionamento (MER) — Sistema de Pousada
 
 ## 1. Entidades
 
-* **Cliente:** Representa a pessoa física responsável pela reserva e pela hospedagem.
-* **Funcionário:** Representa o colaborador da pousada responsável por efetuar o atendimento e registar a reserva.
-* **Reserva:** Representa o agendamento prévio da intenção de hospedagem efetuado pelo cliente.
-* **Hospedagem:** Representa a estadia presencial e ativa do cliente na pousada após o check-in.
-* **Quarto:** Representa a unidade física de acomodação da pousada.
-* **Categoria:** Representa a classificação e a faixa de preço aplicada aos quartos.
-* **Acompanhante:** Representa as pessoas adicionais que ocupam o mesmo quarto juntamente com o cliente principal.
-* **Consumo:** Representa cada lançamento individual de despesa efetuado durante a estadia.
-* **Produto_Serviço:** Representa os itens do catálogo (frigobar, refeições, serviços) disponíveis para consumo.
-* **Pagamento:** Representa cada transação financeira realizada para quitar os custos da hospedagem.
+As entidades identificadas no minimundo da pousada são:
 
-[Cliente] (1,1)  (0,N) [Reserva]
-Explicação: Um Cliente pode realizar nenhuma ou várias Reservas ao longo do tempo, mas cada Reserva é realizada obrigatoriamente por 1 único Cliente.
+| Entidade | Definição |
+|---|---|
+| **Cliente** | Pessoa que realiza reservas na pousada; possui identificação e dados de contato. |
+| **Funcionário** | Colaborador responsável por atender as reservas, identificado também pelo cargo. |
+| **Reserva** | Registro da solicitação de hospedagem, com data de criação, período previsto e status. |
+| **Hospedagem** | Registro da estadia que se concretizou, incluindo check-in, check-out e valores. |
+| **Quarto** | Unidade de acomodação da pousada, identificada pelo número, andar e situação de limpeza. |
+| **Categoria** | Classificação dos quartos, com nome e preço da diária. |
+| **Acompanhante** | Pessoa registrada como acompanhante de uma hospedagem. |
+| **Consumo** | Registro de quantidade, data/hora e valor referente ao uso de um produto ou serviço durante a hospedagem. |
+| **Produto_Servico** | Item do catálogo de produtos ou serviços oferecidos pela pousada, com tipo e preço unitário. |
+| **Pagamento** | Registro do valor, data/hora e forma de pagamento de uma hospedagem. |
 
-[Funcionário] (1,1)  (0,N) [Reserva]
-Explicação: Um Funcionário pode atender nenhuma ou várias Reservas, mas cada Reserva é atendida por 1 único Funcionário.
+## 2. Relacionamentos e Cardinalidades
 
-[Reserva] (1,1)  (0,1) [Hospedagem]
-Explicação: Uma Reserva origina 1 Hospedagem caso o cliente realize o check-in, ou 0 Hospedagens caso a reserva seja cancelada. Cada Hospedagem deriva de exatamente 1 Reserva.
+A seguir estão as **nove associações do diagrama**, mantendo seus nomes e cardinalidades. Os símbolos `1`, `N` e `0..1` seguem a notação do desenho; salvo quando indicado, ele não define todas as participações mínimas.
 
-[Hospedagem] (0,N)  (1,1) [Quarto]
-Explicação: Uma Hospedagem ocupa 1 Quarto específico. O mesmo Quarto pode ser ocupado por N Hospedagens ao longo do tempo (em datas diferentes).
+1. **[Cliente] (1) — realiza — (N) [Reserva]**  
+   Um cliente pode realizar diversas reservas. Cada reserva está associada a um único cliente.
 
-[Quarto] (0,N)  (1,1) [Categoria]
-Explicação: Cada Quarto pertence a 1 Categoria. Uma Categoria pode classificar N Quartos.
+2. **[Funcionário] (1) — atende — (N) [Reserva]**  
+   Um funcionário pode atender diversas reservas. Cada reserva fica associada a um único funcionário responsável pelo atendimento.
 
-[Hospedagem] (1,1)  (0,N) [Acompanhante]
-Explicação: Uma Hospedagem pode incluir 0 ou N Acompanhantes registados. Cada Acompanhante está vinculado a apenas 1 Hospedagem.
+3. **[Reserva] (1) — origina — (0..1) [Hospedagem]**  
+   Uma reserva pode ainda não ter resultado em hospedagem ou originar uma única hospedagem. Cada hospedagem decorre de uma reserva no modelo proposto.
 
-[Hospedagem] (1,1)  (0,N) [Consumo]
-Explicação: Uma Hospedagem pode gerar 0 ou N lançamentos de Consumo. Cada lançamento de Consumo é atribuído a 1 única Hospedagem.
+4. **[Hospedagem] (N) — ocupa — (1) [Quarto]**  
+   Cada hospedagem está vinculada a um quarto. Um mesmo quarto pode ser ocupado por várias hospedagens em momentos diferentes.
 
-[Consumo] (0,N)  (1,1) [Produto_Serviço]
-Explicação: Cada registo de Consumo refere-se a 1 único Produto_Serviço do catálogo. Um Produto_Serviço pode ser referido em N lançamentos de Consumo.
+5. **[Quarto] (N) — pertence — (1) [Categoria]**  
+   Cada quarto pertence a uma categoria. Uma categoria pode classificar diversos quartos.
 
-[Hospedagem] (1,1)  (1,N) [Pagamento]
-Explicação: Uma Hospedagem pode receber 1 ou N Pagamentos (ex.: sinal na entrada e quitação no check-out). Cada Pagamento é efetuado para 1 única Hospedagem.
+6. **[Hospedagem] (1) — inclui — (N) [Acompanhante]**  
+   Uma hospedagem pode reunir registros de vários acompanhantes; cada acompanhante registrado está ligado a uma hospedagem. O mínimo de acompanhantes não está especificado no desenho além da indicação geral 1:N.
 
-erDiagram
-    CLIENTE {
-        string cpf PK
-        string nome
-        string_array telefones
-        string_array emails
-    }
-    FUNCIONARIO {
-        string cpf_funcionario PK
-        string nome
-        string cargo
-    }
-    RESERVA {
-        int cod_reserva PK
-        date data_reserva
-        date data_prevista_em
-        date data_prevista_out
-        string status
-    }
-    HOSPEDAGEM {
-        int cod_hospedagem PK
-        datetime checkin
-        datetime checkout
-        decimal valor_diarias
-        decimal valor_total
-    }
-    QUARTO {
-        int num_quarto PK
-        int andar
-        string status_limpeza
-    }
-    CATEGORIA {
-        int cod_categoria PK
-        string nome_categoria
-        decimal preco_diaria
-    }
-    ACOMPANHANTE {
-        int cod_acompanhante PK
-        string nome
-        string documento
-    }
-    CONSUMO {
-        int cod_consumo PK
-        datetime data_hora
-        int quantidade
-        decimal valor_subtotal
-    }
-    PRODUTO_SERVICO {
-        int cod_item PK
-        string nome_item
-        string tipo
-        decimal preco_unitario
-    }
-    PAGAMENTO {
-        int cod_pagamento PK
-        datetime datahora
-        decimal valor
-        string forma_pagamento
-    }
+7. **[Hospedagem] (1) — gera — (N) [Consumo]**  
+   Uma hospedagem pode gerar diversos registros de consumo. Cada registro de consumo pertence a uma hospedagem.
 
-    CLIENTE ||--o{ RESERVA : "realiza (1:N)"
-    FUNCIONARIO ||--o{ RESERVA : "atende (1:N)"
-    RESERVA ||--o| HOSPEDAGEM : "origina (1:0..1)"
-    HOSPEDAGEM }|--|| QUARTO : "ocupa (N:1)"
-    QUARTO }|--|| CATEGORIA : "pertence (N:1)"
-    HOSPEDAGEM ||--o{ ACOMPANHANTE : "inclui (1:N)"
-    HOSPEDAGEM ||--o{ CONSUMO : "gera (1:N)"
-    CONSUMO }|--|| PRODUTO_SERVICO : "refere (N:1)"
-    HOSPEDAGEM ||--|{ PAGAMENTO : "recebe (1:N)"
+8. **[Consumo] (N) — contém — (1) [Produto_Servico]**  
+   Cada registro de consumo corresponde a um produto ou serviço. Um mesmo item do catálogo pode aparecer em diversos registros de consumo.
+
+9. **[Hospedagem] (1) — recebe — (N) [Pagamento]**  
+   Uma hospedagem pode receber diversos pagamentos. Cada registro de pagamento está associado a uma hospedagem.
+
+## 3. Sugestão de Atributos
+
+Os atributos abaixo reproduzem os nomes e tipos apresentados no diagrama do draw.io. A coluna **Classificação** identifica as chaves primárias (PK) e os atributos multivalorados. Os demais são atributos simples, conforme representados no desenho.
+
+### Cliente
+
+| Atributo | Tipo | Classificação |
+|---|---|---|
+| `cpf` | `string` | **PK** |
+| `nome` | `string` | Simples |
+| `telefones` | `string_array` | **Multivalorado** |
+| `emails` | `string_array` | **Multivalorado** |
+
+### Funcionário
+
+| Atributo | Tipo | Classificação |
+|---|---|---|
+| `cpf_funcionario` | `string` | **PK** |
+| `nome` | `string` | Simples |
+| `cargo` | `string` | Simples |
+
+### Reserva
+
+| Atributo | Tipo | Classificação |
+|---|---|---|
+| `cod_reserva` | `int` | **PK** |
+| `data_reserva` | `date` | Simples |
+| `data_prevista_in` | `date` | Simples |
+| `data_prevista_out` | `date` | Simples |
+| `status` | `string` | Simples |
+
+### Hospedagem
+
+| Atributo | Tipo | Classificação |
+|---|---|---|
+| `cod_hospedagem` | `int` | **PK** |
+| `checkin` | `datetime` | Simples |
+| `checkout` | `datetime` | Simples |
+| `valor_diarias` | `decimal` | Simples no diagrama |
+| `valor_total` | `decimal` | Simples no diagrama |
+
+### Quarto
+
+| Atributo | Tipo | Classificação |
+|---|---|---|
+| `num_quarto` | `int` | **PK** |
+| `andar` | `int` | Simples |
+| `status_limpeza` | `string` | Simples |
+
+### Categoria
+
+| Atributo | Tipo | Classificação |
+|---|---|---|
+| `cod_categoria` | `int` | **PK** |
+| `nome_categoria` | `string` | Simples |
+| `preco_diaria` | `decimal` | Simples |
+
+### Acompanhante
+
+| Atributo | Tipo | Classificação |
+|---|---|---|
+| `cod_acompanhante` | `int` | **PK** |
+| `nome` | `string` | Simples |
+| `documento` | `string` | Simples |
+
+### Consumo
+
+| Atributo | Tipo | Classificação |
+|---|---|---|
+| `cod_consumo` | `int` | **PK** |
+| `data_hora` | `datetime` | Simples |
+| `quantidade` | `int` | Simples |
+| `valor_subtotal` | `decimal` | Simples no diagrama |
+
+### Produto_Servico
+
+| Atributo | Tipo | Classificação |
+|---|---|---|
+| `cod_item` | `int` | **PK** |
+| `nome_item` | `string` | Simples |
+| `tipo` | `string` | Simples |
+| `preco_unitario` | `decimal` | Simples |
+
+### Pagamento
+
+| Atributo | Tipo | Classificação |
+|---|---|---|
+| `cod_pagamento` | `int` | **PK** |
+| `datahora` | `datetime` | Simples |
+| `valor` | `decimal` | Simples |
+| `forma_pagamento` | `string` | Simples |
+
+### Atributos multivalorados, compostos e derivados
+
+- **Multivalorados:** `Cliente.telefones` e `Cliente.emails`, ambos representados como `string_array`. Isso indica que um cliente pode ter mais de um telefone e de um e-mail.
+- **Compostos:** o desenho não identifica nenhum atributo como composto.
+- **Derivados:** o desenho não marca explicitamente nenhum atributo como derivado. Em uma evolução do projeto, `Consumo.valor_subtotal` **poderia** ser calculado a partir da quantidade e do preço unitário; `Hospedagem.valor_total` **poderia** depender das diárias e de outras cobranças. Esses cálculos são **sugestões**, ainda não regras definidas no diagrama.
+
+> **Para uma futura implementação no MySQL:** os relacionamentos poderão ser representados por chaves estrangeiras, e os dados multivalorados de telefone e e-mail poderão exigir tabelas próprias. Essas decisões pertencem à etapa de modelagem lógica e não foram adicionadas ao desenho original.
+
+## 4. Diagrama Entidade e Relacionamento (DER)
+
+O DER foi construído no **draw.io (diagrams.net)** e contém as 10 entidades descritas, suas chaves primárias e os 9 relacionamentos listados.
+
+![DER da Pousada](pousada.png)
+
+- [Visualizar a imagem em tamanho original](pousada.png)
+- [Abrir o arquivo editável no draw.io](Pousada.drawio)
+
+> A imagem tem fundo branco apenas para facilitar a visualização das linhas no GitHub. O arquivo `Pousada.drawio` foi preservado sem alterações.
