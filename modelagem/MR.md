@@ -147,14 +147,3 @@ Os atributos abaixo reproduzem os nomes e tipos apresentados no diagrama do draw
 - **Derivados:** o desenho não marca explicitamente nenhum atributo como derivado. Em uma evolução do projeto, `Consumo.valor_subtotal` **poderia** ser calculado a partir da quantidade e do preço unitário; `Hospedagem.valor_total` **poderia** depender das diárias e de outras cobranças. Esses cálculos são **sugestões**, ainda não regras definidas no diagrama.
 
 > **Para uma futura implementação no MySQL:** os relacionamentos poderão ser representados por chaves estrangeiras, e os dados multivalorados de telefone e e-mail poderão exigir tabelas próprias. Essas decisões pertencem à etapa de modelagem lógica e não foram adicionadas ao desenho original.
-
-## 4. Diagrama Entidade e Relacionamento (DER)
-
-O DER foi construído no **draw.io (diagrams.net)** e contém as 10 entidades descritas, suas chaves primárias e os 9 relacionamentos listados.
-
-![DER da Pousada](pousada.png)
-
-- [Visualizar a imagem em tamanho original](pousada.png)
-- [Abrir o arquivo editável no draw.io](Pousada.drawio)
-
-> A imagem tem fundo branco apenas para facilitar a visualização das linhas no GitHub. O arquivo `Pousada.drawio` foi preservado sem alterações.
