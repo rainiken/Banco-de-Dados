@@ -1,0 +1,67 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Página-1" id="pdX3zRIbLkxn8XotQvEh">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="HHvp3u7ZgQa0R6wt4A6n-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=8;spacingLeft=8;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#1a1a1a;" value="CLIENTE&#xa;────────────&#xa;PK cpf: string&#xa;nome: string&#xa;telefones: string_array&#xa;emails: string_array" vertex="1">
+          <mxGeometry height="140" width="180" x="190" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="HHvp3u7ZgQa0R6wt4A6n-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=8;spacingLeft=8;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#1a1a1a;" value="FUNCIONARIO&#xa;────────────&#xa;PK cpf_funcionario: string&#xa;nome: string&#xa;cargo: string" vertex="1">
+          <mxGeometry height="120" width="180" x="690" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="HHvp3u7ZgQa0R6wt4A6n-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=8;spacingLeft=8;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#1a1a1a;" value="RESERVA&#xa;────────────&#xa;PK cod_reserva: int&#xa;data_reserva: date&#xa;data_prevista_in: date&#xa;data_prevista_out: date&#xa;status: string" vertex="1">
+          <mxGeometry height="150" width="200" x="430" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="HHvp3u7ZgQa0R6wt4A6n-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=8;spacingLeft=8;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#1a1a1a;" value="HOSPEDAGEM&#xa;────────────&#xa;PK cod_hospedagem: int&#xa;checkin: datetime&#xa;checkout: datetime&#xa;valor_diarias: decimal&#xa;valor_total: decimal" vertex="1">
+          <mxGeometry height="150" width="200" x="690" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="HHvp3u7ZgQa0R6wt4A6n-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=8;spacingLeft=8;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#1a1a1a;" value="QUARTO&#xa;────────────&#xa;PK num_quarto: int&#xa;andar: int&#xa;status_limpeza: string" vertex="1">
+          <mxGeometry height="120" width="180" x="1030" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="HHvp3u7ZgQa0R6wt4A6n-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=8;spacingLeft=8;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#1a1a1a;" value="CATEGORIA&#xa;────────────&#xa;PK cod_categoria: int&#xa;nome_categoria: string&#xa;preco_diaria: decimal" vertex="1">
+          <mxGeometry height="120" width="180" x="1380" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="HHvp3u7ZgQa0R6wt4A6n-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=8;spacingLeft=8;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#1a1a1a;" value="ACOMPANHANTE&#xa;────────────&#xa;PK cod_acompanhante: int&#xa;nome: string&#xa;documento: string" vertex="1">
+          <mxGeometry height="120" width="200" x="1030" y="705" as="geometry" />
+        </mxCell>
+        <mxCell id="HHvp3u7ZgQa0R6wt4A6n-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=8;spacingLeft=8;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#1a1a1a;" value="CONSUMO&#xa;────────────&#xa;PK cod_consumo: int&#xa;data_hora: datetime&#xa;quantidade: int&#xa;valor_subtotal: decimal" vertex="1">
+          <mxGeometry height="135" width="200" x="220" y="697.5" as="geometry" />
+        </mxCell>
+        <mxCell id="HHvp3u7ZgQa0R6wt4A6n-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=8;spacingLeft=8;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#1a1a1a;" value="PRODUTO_SERVICO&#xa;────────────&#xa;PK cod_item: int&#xa;nome_item: string&#xa;tipo: string&#xa;preco_unitario: decimal" vertex="1">
+          <mxGeometry height="135" width="200" x="250" y="960" as="geometry" />
+        </mxCell>
+        <mxCell id="HHvp3u7ZgQa0R6wt4A6n-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=8;spacingLeft=8;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#1a1a1a;" value="PAGAMENTO&#xa;────────────&#xa;PK cod_pagamento: int&#xa;datahora: datetime&#xa;valor: decimal&#xa;forma_pagamento: string" vertex="1">
+          <mxGeometry height="135" width="200" x="1010" y="940" as="geometry" />
+        </mxCell>
+        <mxCell id="HHvp3u7ZgQa0R6wt4A6n-11" edge="1" parent="1" source="HHvp3u7ZgQa0R6wt4A6n-1" style="edgeStyle=entityRelationEdgeStyle;rounded=1;html=1;endArrow=none;" target="HHvp3u7ZgQa0R6wt4A6n-3" value="realiza (1:N)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HHvp3u7ZgQa0R6wt4A6n-12" edge="1" parent="1" source="HHvp3u7ZgQa0R6wt4A6n-2" style="edgeStyle=entityRelationEdgeStyle;rounded=1;html=1;endArrow=none;" target="HHvp3u7ZgQa0R6wt4A6n-3" value="atende (1:N)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HHvp3u7ZgQa0R6wt4A6n-13" edge="1" parent="1" source="HHvp3u7ZgQa0R6wt4A6n-3" style="edgeStyle=entityRelationEdgeStyle;rounded=1;html=1;endArrow=none;" target="HHvp3u7ZgQa0R6wt4A6n-4" value="origina (1:0..1)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HHvp3u7ZgQa0R6wt4A6n-14" edge="1" parent="1" source="HHvp3u7ZgQa0R6wt4A6n-4" style="edgeStyle=entityRelationEdgeStyle;rounded=1;html=1;endArrow=none;" target="HHvp3u7ZgQa0R6wt4A6n-5" value="ocupa (N:1)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HHvp3u7ZgQa0R6wt4A6n-15" edge="1" parent="1" source="HHvp3u7ZgQa0R6wt4A6n-5" style="edgeStyle=entityRelationEdgeStyle;rounded=1;html=1;endArrow=none;" target="HHvp3u7ZgQa0R6wt4A6n-6" value="pertence (N:1)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HHvp3u7ZgQa0R6wt4A6n-16" edge="1" parent="1" source="HHvp3u7ZgQa0R6wt4A6n-4" style="edgeStyle=entityRelationEdgeStyle;rounded=1;html=1;endArrow=none;" target="HHvp3u7ZgQa0R6wt4A6n-7" value="inclui (1:N)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HHvp3u7ZgQa0R6wt4A6n-17" edge="1" parent="1" source="HHvp3u7ZgQa0R6wt4A6n-4" style="edgeStyle=entityRelationEdgeStyle;rounded=1;html=1;endArrow=none;" target="HHvp3u7ZgQa0R6wt4A6n-8" value="gera (1:N)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HHvp3u7ZgQa0R6wt4A6n-18" edge="1" parent="1" source="HHvp3u7ZgQa0R6wt4A6n-8" style="edgeStyle=entityRelationEdgeStyle;rounded=1;html=1;endArrow=none;" target="HHvp3u7ZgQa0R6wt4A6n-9" value="contem (N:1)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HHvp3u7ZgQa0R6wt4A6n-19" edge="1" parent="1" source="HHvp3u7ZgQa0R6wt4A6n-4" style="edgeStyle=entityRelationEdgeStyle;rounded=1;html=1;endArrow=none;" target="HHvp3u7ZgQa0R6wt4A6n-10" value="recebe (1:N)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
